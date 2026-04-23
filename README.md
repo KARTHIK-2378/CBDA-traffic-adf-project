@@ -1,62 +1,137 @@
-#  Traffic Data ETL using Azure Data Factory
+#  Traffic Data ETL Pipeline using Azure Data Factory
 
-##  Overview
+##  Project Overview
 
-This project demonstrates an ETL pipeline using Azure Data Factory to process traffic data.
+This project demonstrates an end-to-end **ETL (Extract, Transform, Load)** pipeline using **Azure Data Factory**. Traffic data in CSV format is ingested from Azure Blob Storage, processed, and used for analytics and visualization.
 
-##  Pipeline Flow
+---
 
-Raw CSV → Azure Blob Storage → Azure Data Factory → Processed Output
+##  Architecture
 
-##  Tech Stack
+```
+CSV File
+   ↓
+Azure Blob Storage (raw)
+   ↓
+Azure Data Factory (Copy Data Pipeline)
+   ↓
+Azure Blob Storage (processed)
+   ↓
+Power BI Dashboard
+```
 
-* Azure Data Factory
+---
+
+##  Technologies Used
+
+* Azure Data Factory (ADF)
 * Azure Blob Storage
-* (Optional) Azure SQL Database
+* Power BI
+* CSV Data Source
 
-##  Project Structure
+---
 
-* `data/` → sample datasets
-* `adf/` → pipeline JSON files
-* `docs/` → documentation
-* `screenshots/` → pipeline visuals
+##  Resource Setup
 
-##  How to Run
+* Resource Group: `traffic-etl-rg`
+* Data Factory: `traffic-adf`
+* Storage Account: `trafficdatalake`
 
-1. Upload CSV to Blob Storage (raw folder)
-2. Create datasets in ADF
-3. Run pipeline
-4. Check output in processed folder
+---
 
-#  Traffic Data ETL using Azure Data Factory
+##  Pipeline Details
 
-##  Overview
+* Pipeline Name: `PL_Traffic_ETL`
+* Activity Used: **Copy Data**
+* Source Dataset: `DS_TrafficCSV`
+* Sink Dataset: `DS_TrafficProcessed`
 
-This project demonstrates an ETL pipeline using Azure Data Factory to process traffic data.
+---
 
-##  Pipeline Flow
+##  Data Flow
 
-Raw CSV → Azure Blob Storage → Azure Data Factory → Processed Output
+* **Input Folder:** `raw/`
+* **Output Folder:** `processed/`
 
-## 🛠️ Tech Stack
+Example:
 
-* Azure Data Factory
-* Azure Blob Storage
-* (Optional) Azure SQL Database
+```
+raw/traffic_data.csv → processed/traffic_processed.csv
+```
 
-##  Project Structure
+---
 
-* `data/` → sample datasets
-* `adf/` → pipeline JSON files
-* `docs/` → documentation
-* `screenshots/` → pipeline visuals
+##  Power BI Dashboard
 
-##  How to Run
+The processed data is visualized using Power BI:
 
-1. Upload CSV to Blob Storage (raw folder)
-2. Create datasets in ADF
-3. Run pipeline
-4. Check output in processed folder
+* Vehicle count by year
+* Junction-wise analysis
+* Traffic trends over time
+
+---
+
+##  How to Run the Project
+
+### Step 1: Upload Data
+
+Upload CSV file to:
+
+```
+Blob Storage → raw folder
+```
+
+### Step 2: Create Dataset
+
+* Create dataset for CSV in ADF
+* Link it to Blob Storage
+
+### Step 3: Run Pipeline
+
+```
+Author → Pipelines → PL_Traffic_ETL → Debug/Trigger
+```
+
+### Step 4: Verify Output
+
+Check:
+
+```
+Blob Storage → processed folder
+```
+
+### Step 5: Visualize
+
+Load processed data into Power BI and build visuals.
+
+---
+
+##  Screenshots
+
+(Add your screenshots here)
+
+* Azure Data Factory Pipeline
+* Blob Storage (raw & processed)
+* Power BI Dashboard
+
+---
+
+##  Key Learnings
+
+* Building ETL pipelines in Azure Data Factory
+* Working with Blob Storage datasets
+* Data transformation using Copy Activity
+* Integrating ADF output with Power BI
+
+---
+
+##  Future Enhancements
+
+* Add Data Flow transformations
+* Connect to Azure SQL Database
+* Automate pipeline using triggers
+
+---
 
 ##  Screenshots
 <img width="1919" height="871" alt="Screenshot 2026-04-23 110839" src="https://github.com/user-attachments/assets/c28df63e-3215-4f43-b443-c89d9622e4f3" />
